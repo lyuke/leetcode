@@ -21,31 +21,34 @@ public class QuickSort {
     }
 
     public int partition(int data[],int left,int right){
-        int pivot=data[left];
+        int i=left;
+        int j=right;
+        int tmp;
+        int pivot=data[(left+right)/2];
 
-        while (left<right){
+        while (i<=j) {
 
-            while (left<right && data[right]>=pivot){
-                right--;
+            while (data[i] < pivot) {
+                i++;
             }
-            if (left<right){
-                data[left++]=data[right];
+            while (data[j] > pivot) {
+                j--;
             }
-
-            while(left<right && data[left]<=pivot){
-                left++;
+            if (i <= j) {
+                tmp = data[i];
+                data[i] = data[j];
+                data[j] = tmp;
+                i++;
+                j--;
             }
-            if(left<right){
-                data[right--]=data[left];
-            }
-
-
 
         }
-        data[left]=pivot;
 
-        return left;
+        return i;
     }
+
+
+
 
 
 
